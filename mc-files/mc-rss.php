@@ -1,4 +1,4 @@
-<?php header("Content-Type: application/rss+xml"); ?>
+<?php header("Content-Type: application/xml"); ?>
 <?php echo '<?xml version="1.0" encoding="UTF-8"?>'; ?>
 <rss version="2.0"
   xmlns:content="http://purl.org/rss/1.0/modules/content/"
@@ -10,7 +10,7 @@
 >
 <channel>
   <title><?php mc_site_name(); ?></title>
-  <link><?php mc_site_link(); ?></link>
+  <link><?php mc_site_link(''); ?></link>
   <description><?php mc_site_desc(); ?></description>
   <language>zh_CN</language>
   <sy:updatePeriod>hourly</sy:updatePeriod>

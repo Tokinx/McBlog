@@ -27,12 +27,12 @@ function mc_site_desc($print = true) {
   return $site_desc;
 }
 
-function mc_site_link($print = true) {
+function mc_site_link($url) {
   global $mc_config;
 
-  $site_link = $mc_config['site_link'];
+  $site_link = $mc_config['site_link'] . $url;
 
-  if ($print) {
+  if (true) {
     echo $site_link;
     return;
   }
@@ -393,5 +393,11 @@ function mc_comment_code() {
   global $mc_config;
 
   return isset($mc_config['comment_code']) ? $mc_config['comment_code'] : '';
+}
+function mc_site_icp() {
+  global $mc_config;
+	if($mc_config['site_icp']!='')
+		echo ' . ' . $mc_config['site_icp'];
+	return ;
 }
 ?>
