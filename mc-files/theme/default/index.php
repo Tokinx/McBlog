@@ -3,9 +3,14 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <title><?php if (mc_is_post() || mc_is_page()) { mc_the_title();?> - <?php mc_site_name();} else { mc_site_name();?> - <?php mc_site_desc();}?></title>
 <link type="image/vnd.microsoft.icon" href="<?php mc_theme_url('images/favicon.png');?>" rel="shortcut icon">
 <link href="<?php mc_theme_url('style.css');?>" type="text/css" rel="stylesheet"/>
+<!--[if lt IE 9]>
+<script src="//cdn.bootcss.com/html5shiv/r29/html5.min.js"></script>
+<script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
 </head>
 <body>
 <header id="header">
@@ -22,7 +27,6 @@
 </header>
 <main id="main">
 	<section class="post">
-		<span class="arrow"></span>
 		<?php if (mc_is_post()||mc_is_page()) { ?>
 				<h2><?php mc_the_link();?></h2>
 				<article class="single">
@@ -77,8 +81,8 @@
 </main>
 <div class="clearer"></div>
 <footer id="footer">
-<span title="Copyright">Theme is NewWord . Powered by McBlog</br>
-&copy; <?php echo date('Y'); ?> </span><a href="https://www.idevs.cn/">设计笔记</a><?php mc_site_icp();?>
+Theme is NewWord . Powered by McBlog</br>
+&copy; <?php echo date('Y'); ?> <a href="https://www.idevs.cn/">设计笔记</a><?php mc_site_icp();?>
 </footer>
 </body>
 </html>

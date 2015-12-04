@@ -3,7 +3,8 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,abbr,
 {border:0;font-size:100%;font:inherit;vertical-align:baseline;outline:none;-webkit-font-smoothing:antialiased;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;margin:0;padding:0;box-sizing:border-box;line-height:36px;}
 body{overflow:auto;overflow-x:hidden!important;overflow-y:auto!important;}
 html,body{height:100%;}
-body,input,button{-webkit-appearance:none;border-radius:0;font-family:"Microsoft Yahei",宋体,Tahoma,Helvetica,Arial,SimSun,sans-serif;color:#000;font-size:15px;line-height:1;}
+body,input,button{border-radius:0;font-family:"Microsoft Yahei",宋体,Tahoma,Helvetica,Arial,SimSun,sans-serif;color:#000;font-size:15px;line-height:1;}
+body,button{-webkit-appearance:none;}
 .table_list_tool input,.submit_save,.small_form .button,.admin_page_name a,.wmd-fieldbutton,#upload #submit{line-height:26px;padding:0 16px;background:#eee;}
 .table_list_tool input:hover,.small_form .button:hover,.submit_save:hover,.small_form .button:hover,.admin_page_name a:hover,.wmd-fieldbutton:hover,#upload #submit:hover{background:#27a;color:#fff;cursor:pointer;}
 .small_form .button{padding:4px 20px;}

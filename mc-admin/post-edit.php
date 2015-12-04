@@ -53,11 +53,11 @@ if (isset($_POST['_IS_POST_BACK_'])) {
   
   reset($post_tags);
   
-  if ($post_title == '') {
-    $error_msg = '文章标题不能为空';
+  if ($post_title == '') { //标题为空则自动命名
+    $post_title = '未命名';
   }
   else {
-    if ($post_id == '') {
+    if ($post_id == '') { //新建文章
       $file_names = shorturl($post_title);
       
       foreach ($file_names as $file_name) {
@@ -69,7 +69,7 @@ if (isset($_POST['_IS_POST_BACK_'])) {
         }
       }
     }
-    else {
+    else { //编辑文章
       $file_path = '../mc-files/posts/data/'.$post_id.'.dat';
   
       $data = unserialize(file_get_contents($file_path));
