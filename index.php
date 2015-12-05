@@ -12,6 +12,11 @@ if (preg_match('|^post/([a-z0-5]{6})$|', $qs, $matches)) {
   $mc_get_type = 'post';
   $mc_get_name = $matches[1];
 }
+else if (preg_match('|^search/([^/]+)/(\?page=([0-9]+)){0,1}$|', $qs, $matches)) {
+  $mc_get_type = 'search';
+  $mc_get_name = urldecode($matches[1]);
+  $mc_page_num = isset($matches[2]) ? $matches[3] : 1;
+}
 else if (preg_match('|^tag/([^/]+)/(\?page=([0-9]+)){0,1}$|', $qs, $matches)) {
   $mc_get_type = 'tag';
   $mc_get_name = urldecode($matches[1]);
@@ -70,6 +75,20 @@ else if ($mc_get_type == 'tag') {
   
   $mc_posts = $mc_tag_posts;
   
+  $mc_post_ids = array_keys($mc_posts);
+  $mc_post_count = count($mc_post_ids);
+}
+else if ($mc_get_type == 'search') {
+  require 'mc-files/posts/index/publish.php';
+  $mc_post_ids = array_keys($mc_posts);
+  $mc_post_count = count($mc_post_ids);
+  $mc_search_posts = array();
+  foreach($mc_posts as $k=>$v){
+    if(preg_match('/'.$mc_get_name.'/i',$v['title'])){
+        $mc_search_posts[$k] = $mc_posts[$k];
+    }
+  }
+  $mc_posts = $mc_search_posts;
   $mc_post_ids = array_keys($mc_posts);
   $mc_post_count = count($mc_post_ids);
 }

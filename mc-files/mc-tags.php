@@ -5,13 +5,8 @@ function mc_site_name($print = true) {
   global $mc_config;
 
   $site_name = htmlspecialchars($mc_config['site_name']);
-
-  if ($print) {
-    echo $site_name;
-    return;
-  }
-
-  return $site_name;
+  echo $site_name;
+  return;
 }
 
 function mc_site_desc($print = true) {
@@ -19,12 +14,8 @@ function mc_site_desc($print = true) {
 
   $site_desc = htmlspecialchars($mc_config['site_desc']);
 
-  if ($print) {
     echo $site_desc;
     return;
-  }
-
-  return $site_desc;
 }
 
 function mc_site_link($url) {
@@ -131,21 +122,11 @@ function mc_goto_old($text) {
   global $mc_get_type, $mc_get_name, $mc_page_num, $mc_config;
 
   if ($mc_get_type == 'tag') {
-    echo '<a href="';
-    echo $mc_config['site_link'];
-    echo '/?tag/';
-    echo $mc_get_name;
-    echo '/?page=';
-    echo ($mc_page_num + 1);
-    echo '">';
+    echo '<a href="' . $mc_config['site_link'] . '/?tag/' . $mc_get_name . '/?page=' . ($mc_page_num + 1) . '">';
     echo $text;
     echo '</a>';
   } else {
-    echo '<a href="';
-    echo $mc_config['site_link'];
-    echo '/?page=';
-    echo ($mc_page_num + 1);
-    echo '">';
+    echo '<a href="' . $mc_config['site_link'] . '/?page=' . ($mc_page_num + 1) . '">';
     echo $text;
     echo '</a>';
   }
@@ -155,23 +136,25 @@ function mc_goto_new($text) {
   global $mc_get_type, $mc_get_name, $mc_page_num, $mc_config;
 
   if ($mc_get_type == 'tag') {
-    echo '<a href="';
-    echo $mc_config['site_link'];
-    echo '/?tag/';
-    echo $mc_get_name;
-    echo '/?page=';
-    echo ($mc_page_num - 1);
-    echo '">';
-    echo $text;
-    echo '</a>';
+	  if(($mc_page_num-1)!=1){
+		echo '<a href="' . $mc_config['site_link'] . '/?tag/' . $mc_get_name . '/?page=' . ($mc_page_num - 1) . '">';
+		echo $text;
+		echo '</a>';
+	  }else{
+		echo '<a href="' . $mc_config['site_link'] . '/?tag/' . $mc_get_name . '">';
+		echo $text;
+		echo '</a>';
+	  }
   } else {
-    echo '<a href="';
-    echo $mc_config['site_link'];
-    echo '/?page=';
-    echo ($mc_page_num - 1);
-    echo '">';
-    echo $text;
-    echo '</a>';
+	  if(($mc_page_num-1)!=1){
+		echo '<a href="' . $mc_config['site_link'] . '/?page=' . ($mc_page_num - 1) . '">';
+		echo $text;
+		echo '</a>';
+	  }else{
+		echo '<a href="' . $mc_config['site_link'] . '">';
+		echo $text;
+		echo '</a>';
+	  }
   }
 }
 
@@ -185,11 +168,7 @@ function mc_date_list($item_begin='<li>', $item_gap='', $item_end='</li>') {
       $date = $mc_dates[$i];
 
       echo $item_begin;
-      echo '<a href="';
-      echo $mc_config['site_link'];
-      echo '/?date/';
-      echo $date;
-      echo '/">';
+      echo '<a href="' . $mc_config['site_link'] . '/?date/' . $date . '/">';
       echo $date;
       echo '</a>';
       echo $item_end;
@@ -210,11 +189,7 @@ function mc_tag_list($item_begin='<li>', $item_gap='', $item_end='</li>') {
       $tag = $mc_tags[$i];
 
       echo $item_begin;
-      echo '<a href="';
-      echo $mc_config['site_link'];
-      echo '/?tag/';
-      echo urlencode($tag);
-      echo '/">';
+      echo '<a href="' . $mc_config['site_link'] . '/?tag/' . urlencode($tag) . '/">';
       echo $tag;
       echo '</a>';
       echo $item_end;
@@ -299,15 +274,9 @@ function mc_the_tags($item_begin='', $item_gap=', ', $item_end='', $as_link = tr
     echo $item_begin;
 
     if ($as_link) {
-      echo '<a href="';
-      echo $mc_config['site_link'];
-      echo '/?tag/';
-      echo urlencode($tag);
-      echo '/">#';
+      echo '<a href="' . $mc_config['site_link'] . '/?tag/' . urlencode($tag) . '/">#';
     }
-
     echo $tag;
-
     if ($as_link) {
       echo '</a>';
     }
@@ -356,8 +325,9 @@ function mc_the_thumbnail() {
 		$matches[0]=null;
 		if(preg_match('/<img(.*)\/>/iU',trim(strip_tags(Markdown($data['content']),'<img>')),$matches))
 			echo $html = $matches[0];
+		return ;
 	  }
-	  return ;
+	  else return false;
 }
 
 function mc_the_link() {
@@ -383,7 +353,7 @@ function mc_the_url($print = true) {
   return $url;
 }
 
-function mc_can_comment() { //是否已开启评论，失效？
+function mc_can_comment() {
   global $mc_post_id, $mc_post;
 
   return isset($mc_post['can_comment']) ? $mc_post['can_comment'] == '1' : true;

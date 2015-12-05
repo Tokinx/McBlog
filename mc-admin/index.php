@@ -1,4 +1,5 @@
 <?php
+error_reporting(0);
 require_once dirname(dirname(__FILE__)).'/mc-files/mc-conf.php';
 
 if (isset($_COOKIE['mc_token'])) {
@@ -8,7 +9,10 @@ if (isset($_COOKIE['mc_token'])) {
     Header("Location:{$mc_config['site_link']}/mc-admin/post.php");
   }
 }
-
+if($_GET['logout'] == 'admin') {
+setcookie('mc_token','',time()-3600); 
+Header("Location:{$mc_config['site_link']}/mc-admin/index.php");
+}
 if (isset($_POST['login'])) {
   if ($_POST['user'] == $mc_config['user_name'] 
   && md5($_POST['pass']) == $mc_config['user_pass']) {
