@@ -151,11 +151,15 @@ else {
   $mc_post_ids = array_keys($mc_posts);
   $mc_post_count = count($mc_post_ids);
 }
+error_reporting(0);
+if ($_GET['theme']<>'')
+	require "mc-files/theme/". $_GET['theme'] ."/index.php";
+else{
+	if ($mc_get_type != 'rss'){
+		require "mc-files/theme/". $mc_config['site_theme'] ."/index.php";
+		}
+	else
+		require 'mc-files/mc-rss.php';
+}
 
-
-if ($mc_get_type != 'rss'){
-	require "mc-files/theme/". $mc_config['site_theme'] ."/index.php";
-	}
-else
-  require 'mc-files/mc-rss.php';
 ?>

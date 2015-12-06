@@ -46,7 +46,9 @@ function mc_nick_name($print = true) {
 
 function mc_theme_url($path, $print = true) {
   global $mc_config;
-
+if ($_GET['theme']<>'')
+  $url = $mc_config['site_link'].'/mc-files/theme/'. $_GET['theme'] . '/' .$path;
+else
   $url = $mc_config['site_link'].'/mc-files/theme/'. $mc_config['site_theme'] . '/' .$path;
 
   if ($print) {
