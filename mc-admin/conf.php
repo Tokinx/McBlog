@@ -116,13 +116,13 @@ $theme_image = $mc_config['theme_image']; //缩略图宽度
     <div class="field">
       <div class="label">附件CDN</div>
       <input class="textbox" type="text" name="site_cdn" value="<?php echo htmlspecialchars($site_cdn); ?>" />
-      <div class="info">不启用请留空 . 镜像地址：<?php echo $mc_config['site_link'];?>/mc-admin/upload/</div>
+      <div class="info">不启用请留空 . 镜像地址：<?php echo dirname('http://'.$_SERVER['SERVER_NAME'].$_SERVER["REQUEST_URI"]);?>/upload</div>
     </div>
     <div class="clear"></div>
     <div class="field">
       <div class="label">评论代码</div>
       <textarea rows="5" class="textbox" name="comment_code"><?php echo htmlspecialchars($comment_code); ?></textarea>
-      <div class="info">第三方评论服务所提供的评论代码。<br/>例如：<a href="http://disqus.com/" target="_blank">Disqus</a>。</div>
+      <div class="info">第三方评论服务所提供的评论代码。例如：<a href="http://disqus.com/" target="_blank">Disqus</a>。</div>
     </div>
     <div class="clear"></div>
 	

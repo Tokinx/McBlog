@@ -6,18 +6,18 @@ if (isset($_COOKIE['mc_token'])) {
   $token = $_COOKIE['mc_token'];
 
   if ($token == md5($mc_config['user_name'].'_'.$mc_config['user_pass'])) {
-    Header("Location:{$mc_config['site_link']}/mc-admin/post.php");
+    Header("Location:post.php");
   }
 }
 if($_GET['logout'] == 'admin') {
 setcookie('mc_token','',time()-3600); 
-Header("Location:{$mc_config['site_link']}/mc-admin/index.php");
+Header("Location:index.php");
 }
 if (isset($_POST['login'])) {
   if ($_POST['user'] == $mc_config['user_name'] 
   && md5($_POST['pass']) == $mc_config['user_pass']) {
     setcookie('mc_token', md5($mc_config['user_name'].'_'.$mc_config['user_pass']));
-    Header("Location:{$mc_config['site_link']}/mc-admin/post.php");
+    Header("Location:post.php");
   }
 }
 ?>
