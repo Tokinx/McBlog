@@ -1,5 +1,6 @@
 <?php
 $mc_config = array (
+  'admin_url' => dirname('//'.$_SERVER['SERVER_NAME'].$_SERVER['PHP_SELF']),
   'version' => '1.00',
   'site_link' => 'http://127.0.0.1',
   'site_name' => 'HelloWord',

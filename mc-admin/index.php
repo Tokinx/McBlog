@@ -1,24 +1,21 @@
-<?php
-error_reporting(0);
+<?php error_reporting(0);
 require_once dirname(dirname(__FILE__)).'/mc-files/mc-conf.php';
-
 if (isset($_COOKIE['mc_token'])) {
   $token = $_COOKIE['mc_token'];
-
   if ($token == md5($mc_config['user_name'].'_'.$mc_config['user_pass'])) {
-    Header("Location:post.php");
-  }
+    Header("Location:{$mc_config['admin_url']}/post.php");
+  }else Header("Location:{$mc_config['admin_url']}/index.php?error");
 }
-if($_GET['logout'] == 'admin') {
+if($_GET['admin'] == 'logout') {
 setcookie('mc_token','',time()-3600); 
-Header("Location:index.php");
+Header("Location:{$mc_config['admin_url']}");
 }
 if (isset($_POST['login'])) {
-  if ($_POST['user'] == $mc_config['user_name'] 
+  if (strtoupper($_POST['user']) == strtoupper($mc_config['user_name']) 
   && md5($_POST['pass']) == $mc_config['user_pass']) {
     setcookie('mc_token', md5($mc_config['user_name'].'_'.$mc_config['user_pass']));
-    Header("Location:post.php");
-  }
+    Header("Location:{$mc_config['admin_url']}/post.php");
+  }else Header("Location:{$mc_config['admin_url']}/index.php?admin=error");
 }
 ?>
 <!DOCTYPE html>
@@ -32,6 +29,9 @@ if (isset($_POST['login'])) {
 <body>
   <form action="<?php echo $_SERVER['REQUEST_URI']; ?>" method="post">
   <div id="login_title"><?php echo $mc_config['site_name'];?></div>
+<?php if($_GET['admin'] == 'error') {?>
+<span style="text-align:center;display: block;color: #e00;margin: 10px 0 0 0;">账号与密码不匹配！</span>
+<?php } ?>
   <div id="login_form">
     <div id="login_form_box">
       <div class="label">帐号</div>
