@@ -165,7 +165,7 @@ function empty_textbox_blur(target) {
     <?php require 'editor.php'; ?>
     <?php editor($post_content); ?>
   </div>
-  <div style="margin-bottom:20px;">
+  <div>
     <input name="tags" type="text" class="edit_textbox" placeholder="在此输入标签，多个标签之间用逗号分隔" value="<?php echo htmlspecialchars(implode(',', $post_tags)); ?>"/>
   </div>
   <div style="margin-bottom:20px;text-align:right">

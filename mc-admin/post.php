@@ -294,7 +294,7 @@ function goto_page(e)
   </thead>
   <tbody>
   <?php for ($i = 0; $i < $post_count; $i ++) { if ($i < ($page_num - 1) * 10 || $i >= ($page_num * 10)) continue; $post_id = $post_ids[$i]; $post = $mc_posts[$post_id]; ?>
-    <tr<?php if ($i % 2 == 0) echo ' class="alt"'; ?>>
+    <tr <?php if ($i % 2 == 0) echo ' class="alt"'; ?>>
       <td><input type="checkbox" name="ids" value="<?php echo $post_id; ?>"/></td>
       <td>
         <a class="row_name" href="post-edit.php?id=<?php echo $post_id; ?>"><?php echo htmlspecialchars($post['title']);?></a>

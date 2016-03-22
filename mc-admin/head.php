@@ -31,7 +31,7 @@ function shorturl($input) {
   
   for ($i = 0; $i < $subHexLen; $i++) {
     $subHex = substr ($hex, $i * 8, 8);
-    $int = 0x3FFFFFFF & (1 * ('0x'.$subHex));
+    $int = 0x3FFFFFFF & hexdec($subHex);
     $out = '';
     for ($j = 0; $j < 6; $j++) {
       $val = 0x0000001F & $int;
@@ -57,21 +57,20 @@ function post_sort($a, $b) {
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <title><?php echo $mc_config['site_name'];?></title>
   <link style="text/css" rel="stylesheet" href="style.css" />
   <script type='text/javascript' src='//cdn.bootcss.com/jquery/1.8.3/jquery.min.js'></script>
 </head>
 <body>
-  <div id="menu">
   <div id="content">
-    <h3 id="menu_title"><a href="<?php echo $mc_config['site_link'] != '' ? $mc_config['site_link'] : '/'; ?>"><?php echo htmlspecialchars($mc_config['site_name']); ?></a></h3>
-    <ul>
-      <li <?php echo $page_file == 'post.php' || $page_file == 'post-edit.php' ? 'class="current"' : ''; ?>><a href="post.php">文章</a></li>
-      <li <?php echo $page_file == 'page.php' || $page_file == 'page-edit.php' ? 'class="current"' : ''; ?>><a href="page.php">页面</a></li>
-      <li <?php echo $page_file == 'conf.php' ? 'class="current"' : ''; ?>><a href="conf.php">设置</a></li>
-    </ul>
+    <div id="menu">
+      <h3 id="menu_title"><a href="<?php echo $mc_config['site_link'] != '' ? $mc_config['site_link'] : '/'; ?>"><?php echo htmlspecialchars($mc_config['site_name']); ?></a></h3>
+      <ul>
+        <li <?php echo $page_file == 'post.php' || $page_file == 'post-edit.php' ? 'class="current"' : ''; ?>><a href="post.php">文章</a></li>
+        <li <?php echo $page_file == 'page.php' || $page_file == 'page-edit.php' ? 'class="current"' : ''; ?>><a href="page.php">页面</a></li>
+        <li <?php echo $page_file == 'conf.php' ? 'class="current"' : ''; ?>><a href="conf.php">设置</a></li>
+      </ul>
     <div class="clear"></div>
-  </div>
-  </div>
-  <div id="content">
+    </div>
     <div id="content_box">

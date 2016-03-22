@@ -1,5 +1,5 @@
-<?php header("Content-Type: application/xml"); ?>
-<?php echo '<?xml version="1.0" encoding="UTF-8"?>'; ?>
+<?php header("Content-Type: application/xml");
+echo '<?xml version="1.0" encoding="UTF-8"?>'; ?>
 <rss version="2.0"
   xmlns:content="http://purl.org/rss/1.0/modules/content/"
   xmlns:wfw="http://wellformedweb.org/CommentAPI/"
@@ -15,7 +15,7 @@
   <language>zh_CN</language>
   <sy:updatePeriod>hourly</sy:updatePeriod>
   <sy:updateFrequency>1</sy:updateFrequency>
-  <generator>http://1234n.com/?projects/minicms/</generator>
+  <generator>http://www.mcblog.org/</generator>
 <?php while (mc_next_post()) { ?>
     <item>
       <title><?php mc_the_title(); ?></title>
@@ -23,9 +23,9 @@
       <guid><?php mc_the_url(); ?></guid>
       <dc:creator><?php mc_nick_name(); ?></dc:creator>
       <pubDate><?php mc_the_date(); ?> <?php mc_the_time(); ?></pubDate>
-<?php mc_the_tags("      <category><![CDATA[", "\n", "]]></category>"); echo "\n"; ?>
+      <?php mc_the_tags("<category><![CDATA[", "\n", "]]></category>"); echo "\n"; ?>
       <content:encoded><![CDATA[<?php mc_the_content();?>]]></content:encoded>
     </item>
-<?php   } ?>
+<?php } ?>
 </channel>
 </rss>

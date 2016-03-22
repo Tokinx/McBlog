@@ -326,7 +326,7 @@ function mc_the_thumbnail() {
 		$data = unserialize(file_get_contents('mc-files/posts/data/'.$mc_post_id.'.dat'));
 		$matches[0]=null;
 		if(preg_match('/<img(.*)\/>/iU',trim(strip_tags(Markdown($data['content']),'<img>')),$matches))
-			echo $html = $matches[0];
+            echo $html = $matches[0];
 		return ;
 	  }
 	  else return false;

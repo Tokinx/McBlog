@@ -1,1 +1,4 @@
-<?php $mc_pages=array(); ?>
+<?php
+$mc_pages=array (
+)
+?>

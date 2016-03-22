@@ -8,21 +8,7 @@ function fileext($filename){
     $sTemp = strrchr($filename, ".");
     return substr($sTemp, 1);
 }
-function imgthumb($old_img,$width){
-	$area=@getimagesize($old_img);
-	switch( $area['2'] ){
-		case 2:$format=imagecreatefromjpeg($old_img);break;
-		case 3:$format=imagecreatefrompng($old_img);break;
-		default:return false;
-	}
-	$scale=$area['0']/$area['1'];
-	if( $area['0'] >= $width/1.4 ){
-		$new_img=imagecreatetruecolor($width,$width/$scale);
-		imagecopyresampled($new_img,$format,0,0,0,0,$width,$width/$scale,$area['0'],$area['1']);
-		imagejpeg($new_img,$old_img);
-		imagedestroy($format);
-	}
-}
+
 $type_image = array("jpg", "jpeg", "png");
 $type_annex = array("gif", "zip", "rar", "txt", "mp3", "flv");
 $rand="hi_".date('Ymd')."_".rand();
@@ -31,12 +17,9 @@ $export = "http://";
 //$uploadfile = $rand . "." . $fileext;
 $uploadfile = $rand . ".jpg";
 if ((in_array($fileext, $type_image)||in_array($fileext, $type_annex))&&($_FILES["file"]["size"] < 81920000)){
-	if(in_array($fileext, $type_image)&&$mc_config['theme_image']!=''){
-		imgthumb($_FILES["file"]["tmp_name"],$mc_config['theme_image']);
-	}
 	move_uploaded_file($_FILES["file"]["tmp_name"],'upload/' . $uploadfile);
 	if($mc_config['site_cdn']=='')
-		$export = $mc_config['site_link'] . "/mc-admin/upload/" . $uploadfile;
+		$export = dirname('http://'.$_SERVER['SERVER_NAME'].$_SERVER["REQUEST_URI"]) . "/upload/" . $uploadfile;
 	else
 		$export = $mc_config['site_cdn'] . $uploadfile;
 }

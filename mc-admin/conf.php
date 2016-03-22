@@ -20,7 +20,6 @@ if (isset($_POST['save'])) {
   
   /* 开放参数 */
   $mc_config['theme_post_number'] = $_POST['theme_post_number'];
-  $mc_config['theme_image'] = $_POST['theme_image'];
   
   if ($_POST['user_pass'] != '')
     $mc_config['user_pass'] = md5($_POST['user_pass']);
@@ -49,7 +48,6 @@ $comment_code = isset($mc_config['comment_code']) ? $mc_config['comment_code'] :
 
 /* 开放参数 */
 $theme_post_number = $mc_config['theme_post_number']; //文章列表数目
-$theme_image = $mc_config['theme_image']; //缩略图宽度
 
 ?>
 <form action="<?php echo $_SERVER['REQUEST_URI']; ?>" method="post">
@@ -114,9 +112,9 @@ $theme_image = $mc_config['theme_image']; //缩略图宽度
     </div>
     <div class="clear"></div>
     <div class="field">
-      <div class="label">附件CDN</div>
-      <input class="textbox" type="text" name="site_cdn" value="<?php echo htmlspecialchars($site_cdn); ?>" />
-      <div class="info">不启用请留空 . 镜像地址：<?php echo dirname('http://'.$_SERVER['SERVER_NAME'].$_SERVER["REQUEST_URI"]);?>/upload</div>
+      <div class="label">文章列表数目</div>
+      <input class="textbox" type="text" name="theme_post_number" value="<?php echo htmlspecialchars($theme_post_number); ?>" />
+      <div class="info"></div>
     </div>
     <div class="clear"></div>
     <div class="field">
@@ -134,6 +132,13 @@ $theme_image = $mc_config['theme_image']; //缩略图宽度
 <label for="tab3" class="tab_buttom tab_buttom3">安全设置</label>
 <div id="tab-content3" class="tab-content">
 
+    <div class="field">
+      <div class="label">附件CDN</div>
+      <input class="textbox" type="text" name="site_cdn" value="<?php echo htmlspecialchars($site_cdn); ?>" />
+      <div class="info">不启用请留空 . 镜像地址：<?php echo dirname('http://'.$_SERVER['SERVER_NAME'].$_SERVER["REQUEST_URI"]);?>/upload</div>
+    </div>
+    <div class="clear"></div>
+    <hr>
     <div class="field">
       <div class="label">登陆帐号</div>
       <input class="textbox" type="text" name="user_name" value="<?php echo htmlspecialchars($user_name); ?>" />
@@ -156,12 +161,6 @@ $theme_image = $mc_config['theme_image']; //缩略图宽度
 </div>
 </li>
 
-<?php
-	echo '<div class="nones">';
-	$panduan = (include_once '../mc-files/theme/' . $mc_config['site_theme'] . '/deploy.php');
-	if($panduan != '1') echo '<style>.nones{display:none;}</style>';
-	echo '</div>';
-?>
     <div class="clear"></div>
     <div class="field">
       <div class="label"></div>

@@ -14,29 +14,32 @@
 </head>
 <body>
 <header id="header">
-<h1 class="title">
-<a href="<?php mc_site_link('');?>"><?php mc_site_name();?></a>
-<span class="desc"><?php mc_site_desc();?></span>
-</h1>
-<ul class="nav">
-<li><a href="<?php mc_site_link('');?>">首页</a></li>
-<li><a href="<?php mc_site_link('/?about/');?>">关于</a></li>
-<li><a href="<?php mc_site_link('/?archive/');?>">存档</a></li>
-<li><a target="_blank" href="<?php mc_site_link('/?rss/');?>">订阅</a></li>
-</ul>
+    <h1 class="title">
+        <a href="<?php mc_site_link('');?>"><?php mc_site_name();?></a>
+        <span class="desc"><?php mc_site_desc();?></span>
+    </h1>
+    <ul class="nav">
+        <li><a href="<?php mc_site_link('');?>">首页</a></li>
+        <li><a href="<?php mc_site_link('/?about/');?>">关于</a></li>
+        <li><a href="<?php mc_site_link('/?archive/');?>">存档</a></li>
+    </ul>
 </header>
-<main id="main">
+<div id="main" class="container">
 	<section class="post">
 		<?php if (mc_is_post()||mc_is_page()) { ?>
-				<h2><?php mc_the_link();?></h2>
-				<article class="single">
-					<?php mc_the_content();if(!mc_is_page());?>
-				</article>
+        <h2><?php mc_the_link();?></h2>
+		<div class="info">
+			<div class="time"><?php mc_the_date();?></div>
+			<div class="tags"><?php mc_the_tags('','','');?></div>
+		</div>
+        <article class="single">
+		  <?php mc_the_content();if(!mc_is_page());?>
+		</article>
 		<?php if (mc_can_comment()&&mc_comment_code()){?>
-			<div class="comment">
-				评论
-				<?php echo mc_comment_code();?>
-			</div>
+        <div class="comment">
+            评论
+            <?php echo mc_comment_code();?>
+        </div>
 		<?php }
 		 } else if (mc_is_archive()) { // 归档 ?>
 		<div class="archive">
@@ -62,14 +65,14 @@
 		<?php } 
 		// 列表
 		while (mc_next_post()) : ?>
-				<div >
-					<h2><?php mc_the_link();?></h2>
-					<?php mc_the_thumbnail();mc_the_excerpt('200');?>
-					<div class="info">
-						<div class="time"><?php mc_the_date();?></div>
-						<div class="tags"><?php mc_the_tags('','','');?></div>
-					</div>
-				</div>
+        <div class="post_list">
+            <h2><?php mc_the_link();?></h2>
+			<div class="info">
+				<div class="time"><?php mc_the_date();?></div>
+				<div class="tags"><?php mc_the_tags('','','');?></div>
+			</div>
+            <p><?php mc_the_excerpt('120');?></p>
+        </div>
 		<?php endwhile;?>
 		<nav class="navigator">
 		<?php if(mc_has_new()){mc_goto_new('上一页');}
@@ -78,10 +81,11 @@
 			<div class="clearer"></div>
 		<?php } ?>
 	</section>
-</main>
+</div>
 <div class="clearer"></div>
 <footer id="footer">
-Theme is NewWord . Powered by McBlog</br>
+<a target="_blank" href="<?php mc_site_link('/?rss/');?>" class="rss">RSS</a>
+Theme is Reds by Tokin<br/>
 &copy; <?php echo date('Y'); ?> <a href="https://www.idevs.cn/">设计笔记</a><?php mc_site_icp();?>
 </footer>
 </body>

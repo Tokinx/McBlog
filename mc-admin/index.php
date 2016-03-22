@@ -3,19 +3,19 @@ require_once dirname(dirname(__FILE__)).'/mc-files/mc-conf.php';
 if (isset($_COOKIE['mc_token'])) {
   $token = $_COOKIE['mc_token'];
   if ($token == md5($mc_config['user_name'].'_'.$mc_config['user_pass'])) {
-    Header("Location:{$mc_config['admin_url']}/post.php");
-  }else Header("Location:{$mc_config['admin_url']}/index.php?error");
+    Header("Location:post.php");
+  }else Header("Location:index.php?error");
 }
 if($_GET['admin'] == 'logout') {
 setcookie('mc_token','',time()-3600); 
-Header("Location:{$mc_config['admin_url']}");
+Header("Location:index.php");
 }
 if (isset($_POST['login'])) {
   if (strtoupper($_POST['user']) == strtoupper($mc_config['user_name']) 
   && md5($_POST['pass']) == $mc_config['user_pass']) {
     setcookie('mc_token', md5($mc_config['user_name'].'_'.$mc_config['user_pass']));
-    Header("Location:{$mc_config['admin_url']}/post.php");
-  }else Header("Location:{$mc_config['admin_url']}/index.php?admin=error");
+    Header("Location:post.php");
+  }else Header("Location:index.php?admin=error");
 }
 ?>
 <!DOCTYPE html>

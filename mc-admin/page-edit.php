@@ -172,15 +172,14 @@ function empty_textbox_blur(target) {
     <?php require 'editor.php'; ?>
     <?php editor($page_content); ?>
   </div>
-  <div style="margin-bottom:20px;">
-    <input name="path" type="text" class="edit_textbox" placeholder="在此输入页面路径，多级路径用半角斜杠(/)分割" value="<?php echo htmlspecialchars($page_path); ?>"/>
+  <div>
+    <input name="path" type="text" class="edit_textbox" placeholder="在此修改固定链接" value="<?php echo htmlspecialchars($page_path); ?>"/>
   </div>
-  <div style="margin-bottom:20px;text-align:right">
-    <div style="float:left">
+  <div style="margin-bottom:20px;">
     时间：
     <select name="year">
       <option value=""></option>
-<?php $year = substr($page_date, 0, 4); for ($i = 1990; $i <= 2030; $i ++) { ?>
+<?php $year = substr($page_date, 0, 4); for ($i = date("Y")-10; $i <= date("Y")+10; $i ++) { ?>
       <option value="<?php echo $i; ?>" <?php if ($year == $i) echo 'selected="selected";' ?>><?php echo $i; ?></option>
 <?php } ?>
     </select> -
@@ -214,12 +213,13 @@ function empty_textbox_blur(target) {
       <option value="<?php echo $m; ?>" <?php if ($second == $m) echo 'selected="selected";' ?>><?php echo $m; ?></option>
 <?php } ?>
     </select>
-    </div>
+    <br/>
     评论：
     <select name="can_comment" style="margin-right:16px;">
       <option value="1" <?php if ($page_can_comment == '1') echo 'selected="selected";'; ?>>允许</option>
       <option value="0" <?php if ($page_can_comment == '0') echo 'selected="selected";'; ?>>禁用</option>
     </select>
+    <br/>
     状态：
     <select name="state" style="width:100px;">
       <option value="publish" <?php if ($page_state == 'publish') echo 'selected="selected"'; ?>>发布</option>
