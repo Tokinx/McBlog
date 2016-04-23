@@ -217,7 +217,7 @@ function empty_textbox_blur(target) {
 </form>
 <?php if ($succeed) {
         if ($post_state == 'publish')
-            echo '<div class="updated">文章已发布。 <a href="'.$mc_config['site_link'].'/?'.$post_path.'/" target="_blank">查看页面</a></div>';
+            echo '<div class="updated">文章已发布。 <a href="'.$mc_config['site_link'].'/?'.$post_id.'" target="_blank">查看文章</a></div>';
         else
             echo '<div class="updated">文章已保存到“草稿箱”。 <a href="post.php?state=draft">打开草稿箱</a></div>';
       }
