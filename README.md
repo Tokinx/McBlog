@@ -1,8 +1,10 @@
-# 你期待的，McBlog Beta2.0
+# McBlog Beta2.1.5 现已发布 2016-04-24
 
 McBlog2.0已经发布，目前还处于测试阶段，新版主要对UI进行了深度调整，响应式还在调试，暂时不建议长时间在移动端操作。
 
 另外，官网已在年前上线，欢迎访问：http://www.mcblog.org 随时了解McBlog动态。
+
+更新内容已移至：http://hi.idevs.cn/
 
 ## 如何使用
 
@@ -25,8 +27,6 @@ McBlog2.0已经发布，目前还处于测试阶段，新版主要对UI进行了
  - 演示密码：123456
  - 默认主题：http://hi.idevs.cn/?theme=default
 
-考虑网站安全问题，配置文件的写操作我给关闭了，所以你无法对网站的设置进行保存，但是其他功能基本上都可以体验一下了。
-
 # 2.0预览
 
 ![登陆][1]
@@ -36,11 +36,6 @@ McBlog2.0已经发布，目前还处于测试阶段，新版主要对UI进行了
 ![撰写][3]
 
 ![设置][4]
-
-## 更新历史移至：http://www.mcblog.org/update.html
-
-基于MiniCms的php纯文本Blog程序
-
 
   [1]: http://hi.idevs.cn/mc-admin/upload/hi_20160323_1477424591.jpg
   [2]: http://hi.idevs.cn/mc-admin/upload/hi_20160323_1255442127.jpg
