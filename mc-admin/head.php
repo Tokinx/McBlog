@@ -1,6 +1,7 @@
-<?php
-ini_set("display_errors", "On"); error_reporting(E_ALL);
+<?php error_reporting(0);
 require_once '../mc-files/mc-conf.php';
+
+$error_msg='';
 
 if (isset($_COOKIE['mc_token'])) {
   $token = $_COOKIE['mc_token'];
@@ -65,7 +66,7 @@ function post_sort($a, $b) {
 <body>
   <div id="content">
     <div id="menu">
-      <h3 id="menu_title"><a href="<?php echo $mc_config['site_link'] != '' ? $mc_config['site_link'] : '/'; ?>"><?php echo htmlspecialchars($mc_config['site_name']); ?></a></h3>
+      <h3 id="menu_title"><a href="<?php echo $mc_config['site_link'] != '' ? $mc_config['site_link'] : '/'; ?>" target="_blank"><?php echo htmlspecialchars($mc_config['site_name']); ?></a></h3>
       <ul>
         <li <?php echo $page_file == 'post.php' || $page_file == 'post-edit.php' ? 'class="current"' : ''; ?>><a href="post.php">文章</a></li>
         <li <?php echo $page_file == 'page.php' || $page_file == 'page-edit.php' ? 'class="current"' : ''; ?>><a href="page.php">页面</a></li>

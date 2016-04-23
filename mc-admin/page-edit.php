@@ -1,6 +1,4 @@
-<?php
-require 'head.php';
-
+<?php require 'head.php';
 $page_file        = '';
 $page_path        = '';
 $page_state       = '';
@@ -9,7 +7,6 @@ $page_content     = '';
 $page_date        = '';
 $page_time        = '';
 $page_can_comment = '';
-$error_msg        = '';
 $succeed          = false;
   
 if (isset($_POST['_IS_POST_BACK_'])) {
@@ -56,12 +53,8 @@ if (isset($_POST['_IS_POST_BACK_'])) {
   
   $page_path = implode('/', $page_path_part);
   
-  if ($page_title == '') {
-    $error_msg = '页面标题不能为空';
-  }
-  else if ($page_path == '') {
-    $error_msg = '页面路径不能为空';
-  }
+  if ($page_title == '') $error_msg = '页面标题不能为空';
+  else if ($page_path == '') $error_msg = '固定链接不能为空';
   else {
     if ($page_file == '') {
       $file_names = shorturl($page_title);
@@ -158,13 +151,6 @@ function empty_textbox_blur(target) {
 </script>
 <form action="<?php echo $_SERVER['REQUEST_URI']; ?>" method="post">
   <input type="hidden" name="_IS_POST_BACK_" value=""/>
-  <?php if ($succeed) { ?>
-  <?php if ($page_state == 'publish') { ?>
-  <div class="updated">页面已发布。 <a href="<?php echo $mc_config['site_link']; ?>/?<?php echo $page_path; ?>/" target="_blank">查看页面</a></div>
-  <?php } else { ?>
-  <div class="updated">页面已保存到“草稿箱”。 <a href="page.php?state=draft">打开草稿箱</a></div>
-  <?php } ?>
-  <?php } ?>
   <div style="margin:0 0 20px;">
     <input name="title" type="text" class="edit_textbox edit_view" style="font-size:18px;" placeholder="在此输入标题" value="<?php echo htmlspecialchars($page_title); ?>"/>
   </div>
@@ -179,7 +165,7 @@ function empty_textbox_blur(target) {
     时间：
     <select name="year">
       <option value=""></option>
-<?php $year = substr($page_date, 0, 4); for ($i = date("Y")-10; $i <= date("Y")+10; $i ++) { ?>
+<?php $year = substr($page_date, 0, 4); for ($i = date("Y")-10; $i <= date("Y")+1; $i ++) { ?>
       <option value="<?php echo $i; ?>" <?php if ($year == $i) echo 'selected="selected";' ?>><?php echo $i; ?></option>
 <?php } ?>
     </select> -
@@ -231,4 +217,12 @@ function empty_textbox_blur(target) {
     <input type="submit" class="submit_save" name="save" value="保存" style="padding:4px 40px;"/>
   </div>
 </form>
+
+  <?php if ($succeed) {
+    if ($page_state == 'publish')
+        echo '<div class="updated">页面已发布。 <a href="'.$mc_config['site_link'].'/?'.$page_path.'/" target="_blank">查看页面</a></div>';
+    else
+        echo '<div class="updated">页面已保存到“草稿箱”。 <a href="page.php?state=draft">打开草稿箱</a></div>';
+  } ?>
+  <?php if ($error_msg != '') echo '<div class="error">'.$error_msg.'</div>'; ?>
 <?php require 'foot.php' ?>

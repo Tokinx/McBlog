@@ -1,6 +1,6 @@
 <?php
 $mc_config = array (
-  'version' => 'Beta2.0.0',
+  'version' => 'Beta2.1.5',
   'site_link' => 'http://hi.idevs.cn',
   'site_name' => 'HelloWord',
   'site_desc' => '又一个McBlog博客',

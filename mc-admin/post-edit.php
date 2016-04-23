@@ -9,7 +9,6 @@ $post_tags        = array();
 $post_date        = '';
 $post_time        = '';
 $post_can_comment = '';
-$error_msg        = '';
 $succeed          = false;
   
 if (isset($_POST['_IS_POST_BACK_'])) {
@@ -53,9 +52,7 @@ if (isset($_POST['_IS_POST_BACK_'])) {
   
   reset($post_tags);
   
-  if ($post_title == '') { //标题为空则自动命名
-    $post_title = '未命名';
-  }
+  if ($post_title == '') $error_msg = '文章标题不能为空';
   else {
     if ($post_id == '') { //新建文章
       $file_names = shorturl($post_title);
@@ -151,13 +148,6 @@ function empty_textbox_blur(target) {
 </script>
 <form action="<?php echo $_SERVER['REQUEST_URI']; ?>" method="post">
   <input type="hidden" name="_IS_POST_BACK_" value=""/>
-  <?php if ($succeed) { ?>
-  <?php if ($post_state == 'publish') { ?>
-  <div class="updated">文章已发布。 <a href="<?php echo $mc_config['site_link']; ?>/?post/<?php echo $post_id; ?>" target="_blank">查看文章</a></div>
-  <?php } else { ?>
-  <div class="updated">文章已保存到“草稿箱”。 <a href="post.php?state=draft">打开草稿箱</a></div>
-  <?php } ?>
-  <?php } ?>
   <div style="margin:0 0 20px;">
     <input name="title" type="text" class="edit_textbox edit_view" style="font-size:18px;" placeholder="在此输入标题" value="<?php echo htmlspecialchars($post_title); ?>"/>
   </div>
@@ -168,12 +158,11 @@ function empty_textbox_blur(target) {
   <div>
     <input name="tags" type="text" class="edit_textbox" placeholder="在此输入标签，多个标签之间用逗号分隔" value="<?php echo htmlspecialchars(implode(',', $post_tags)); ?>"/>
   </div>
-  <div style="margin-bottom:20px;text-align:right">
-    <div style="float:left">
+  <div style="margin-bottom:20px;">
     时间：
     <select name="year">
       <option value=""></option>
-<?php $year = substr($post_date, 0, 4); for ($i = 1990; $i <= 2030; $i ++) { ?>
+<?php $year = substr($page_date, 0, 4); for ($i = date("Y")-10; $i <= date("Y")+1; $i ++) { ?>
       <option value="<?php echo $i; ?>" <?php if ($year == $i) echo 'selected="selected";' ?>><?php echo $i; ?></option>
 <?php } ?>
     </select> -
@@ -207,12 +196,13 @@ function empty_textbox_blur(target) {
       <option value="<?php echo $m; ?>" <?php if ($second == $m) echo 'selected="selected";' ?>><?php echo $m; ?></option>
 <?php } ?>
     </select>
-    </div>
+      <br/>
     评论：
     <select name="can_comment" style="margin-right:16px;">
       <option value="1" <?php if ($post_can_comment == '1') echo 'selected="selected";'; ?>>允许</option>
       <option value="0" <?php if ($post_can_comment == '0') echo 'selected="selected";'; ?>>禁用</option>
     </select>
+      <br/>
     状态：
     <select name="state" style="width:100px;">
       <option value="publish" <?php if ($post_state == 'publish') echo 'selected="selected"'; ?>>发布</option>
@@ -225,4 +215,11 @@ function empty_textbox_blur(target) {
     <input type="submit" class="submit_save" name="save" value="保存" style="padding:4px 40px;"/>
   </div>
 </form>
-<?php require 'foot.php' ?>
+<?php if ($succeed) {
+        if ($post_state == 'publish')
+            echo '<div class="updated">文章已发布。 <a href="'.$mc_config['site_link'].'/?'.$post_path.'/" target="_blank">查看页面</a></div>';
+        else
+            echo '<div class="updated">文章已保存到“草稿箱”。 <a href="post.php?state=draft">打开草稿箱</a></div>';
+      }
+    if ($error_msg != '') echo '<div class="error">'.$error_msg.'</div>';
+require 'foot.php' ?>

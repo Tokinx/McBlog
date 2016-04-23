@@ -30,11 +30,11 @@ select{border:solid 1px #eee;border-radius:0;padding:2px 4px;}
 #menu:before{content:'';position:absolute;top: 72px;left:0;width:100%;height:1px;background:#eee;}
 #menu_title{font-size:22px;line-height:72px;margin:0 0 20px 0;text-align:center;}
 #menu ul{width:100%;text-align:center;}
-#menu ul a{display:block;width:100%;position:relative;line-height:46px;margin:0 0 10px 0}
+#menu ul a{display:block;width:100%;position:relative;line-height:46px;margin:0 0 10px 0;background:#fff;}
 #menu .current a:after{content:'';height:100%;width:2px;position:absolute;right:-1px;background: #2ae;}
-#menu .current a,#menu li a:hover{color:#2ae;background:#f6f6f6}
+#menu .current a,#menu li a:hover{color:#2ae;background:#f6f6f6;}
 
-#content_box{width:740px;float:right;border-left:1px solid #eee;padding:20px;}
+#content_box{width:740px;float:right;border-left:1px solid #eee;padding:18px 20px;}
 
 #submenu{border-bottom:solid 1px #e0e0e0;}
 #submenu li{float:left;}
@@ -61,26 +61,28 @@ select{border:solid 1px #eee;border-radius:0;padding:2px 4px;}
 .table_list_tool .pager .link_button{padding:4px 10px;}
 .table_list_tool .pager input{width:26px;font-size:12px;text-align:center;}
 #page_input_2{padding: 0;background: none;color: #333;cursor:text;}
-div.updated,.message,div.error{background:#dfc;border:1px solid #ae9;padding:0 10px;position:fixed;bottom:20px;left:20px;z-index:99999;border-radius:2px;}
-div.error{background:#FFFFE0;border:1px solid #fa7;}
+.updated,.message,.error{background:#dfc;border:1px solid #ae9;padding:0 10px;position:fixed;top:17px;right:18px;z-index:99;border-radius:2px;}
+.error{background:#FFFFE0;border:1px solid #fda;}
+.message{background: #E0FCFF;border: 1px solid #AADCFF;}
 .admin_page_name{font-size:18px;color:#333;padding:0 0 32px 0;}
 .admin_page_name a{float:right;margin:5px 0 0 0;border-radius:100px;}
 
 .small_form .name{font-size:16px;font-weight:700;color:#333;}
 .small_form .label{color:#333;padding-bottom:4px;}
 .small_form .field{margin-top:12px;}
-.small_form .textbox{width:100%;border:solid 1px #eee;padding:6px 10px;}
-.small_form .info{color:#aaa;font-size:13px;margin:0 0 0 10px;line-height:28px!important;}
-.small_form2 .label{/*float:left;width:100px;*/}
+.small_form .textbox{width:100%;border:solid 1px #eee;padding:8px 10px;}
+.small_form .info{color:#aaa;font-size:13px;margin:0 0 0 10px;line-height:25px}
+.small_form .info code{line-height:20px}
 .small_form2 .textbox{max-width:300px;margin:0 0 0 10px;border-radius:3px;}
-.small_form textarea.textbox{max-width:80%;height:120px;}
+.small_form2 .textbox:focus{border:1px solid #2ae;}
+.small_form2 .textbox[disabled=disabled]{background:#fafafa;}
+.small_form textarea.textbox{max-width:80%;height:120px;line-height:20px;font-size:13px;color:#666}
 .small_form2 .field_body{width: 300px;}
-.small_form2 .info {/*width:300px;float:left;margin-left:40px;*/}
 
 /* 编辑器 */
-.edit_textbox{width:100%;line-height:38px;margin:0 0 20px;padding:0 10px;}
+.edit_textbox{width:100%;line-height:36px;margin:0 0 20px;padding:0 10px;}
 .edit_textbox[name=tags],.edit_textbox[name=path]{box-shadow:none!important;border:1px solid #eee;border-radius:3px;}
-.edit_textbox:hover{box-shadow:0 1px 0 #2ae;}
+.edit_textbox:focus{box-shadow:0 0 0 1px #2ae;border-radius:2px}
 .edit_textarea{height:300px;width:100%!important;font-size:13px;border:solid 1px #eee;padding:10px;overflow-x:visible;overflow-y:visible;line-height: 1.5;font-size: 100%;font-family: Menlo,Monaco,Consolas,"Courier New",monospace;resize: none;}
 .wmd-input{display:block;clear:left;border-radius:0 0 3px 3px;}
 /* 编辑器按钮 */
@@ -201,14 +203,14 @@ input.wmd-fieldinput,textarea.wmd-fieldinput{width:100%;border: 1px solid #D9D9D
 .tabs .tab-content{display:none;font-size:15px;width:100%;background:#fff;font-size:16px;}
 .tabs [id^=tab] + label{border-radius:100px;line-height:32px;}
 .tabs [id^=tab]:checked + label{background:#2ae;color:#fff;}
-.tabs .tab_buttom{width:100px;top:0;position:absolute!important;}
+.tabs .tab_buttom{width:80px;top:0;position:absolute!important;}
 .tabs .tab_buttom1{left:0px;}
-.tabs .tab_buttom2{left:120px;}
-.tabs .tab_buttom3{left:240px;}
+.tabs .tab_buttom2{left:100px;}
+.tabs .tab_buttom3{left:200px;}
 .tabs [id^=tab]:checked ~ [id^=tab-content]{display:block;}
 .tabs .field_body{width:100%;}
 .tabs .field_body input{max-width:160px;width:100%;border-radius:3px;}
-.tabs hr{height:1px;border:0;background:#ddd;margin:20px 0}
+.tabs hr{height:1px;border:0;background:#ddd;background-image:linear-gradient(to left,#fff,#ededed);margin:20px 0}
 
 /* 登陆 */
 #login_title{text-align:center;max-width:360px;padding:100px 0 0 0;margin:auto;font-size:36px;color:#2ae;position:relative;}
@@ -221,18 +223,21 @@ input.wmd-fieldinput,textarea.wmd-fieldinput{width:100%;border: 1px solid #D9D9D
 #login_form .button{padding:0 16px;margin:20px 0;background:#2ae;color:#fff;width:160px;line-height:38px;cursor:pointer;border-radius:100px}
 #login_form .button:hover{background:#3cf;}
 
-
 #footer{color:#888;width:100%;font-size:13px;margin:0 auto;padding:30px 0;text-align:center;border-top:1px solid #eee}
 
 @media(max-width:960px){
 #menu{width:100%;float:none;}
 #menu_title{width:30%;text-align:left;padding:0 0 0 20px;margin:0;float:left;}
 #menu ul{width:70%;float:right;text-align:right;}
-#menu li{display:inline-block;text-align:center;max-width:26%;width:100%}
+#menu li{display:inline-block;text-align:center;max-width:60px;width:100%}
 #menu ul a{line-height:72px;margin:0;}
 #menu .current a:after{content:'';height:2px;width:100%;bottom:-1px;left:0;}
+.edit_textbox{margin:0;}
+.edit_textbox{line-height:36px;box-shadow:0 0 0 1px #ededed;border-radius:2px}
 #content_box{width:100%;float:none;border:0;}
 .admin_page_name{padding:0 0 12px 0;margin:0 0 10px 0;border-bottom:1px solid #eee;}
-
-
+}
+@media(max-width:500px){
+.wmd-toolbar,.annex,.wmd-view,.wmd-type,.wmd-off{display:none!important}
+.wmd-input{border-radius: 3px}
 }

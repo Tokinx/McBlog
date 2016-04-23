@@ -1,5 +1,4 @@
-<?php
-require_once '../mc-files/mc-conf.php';
+<?php require_once '../mc-files/mc-conf.php';
 
 if (!is_dir('../mc-files/pages/data/'))
   mkdir('../mc-files/pages/data/');
