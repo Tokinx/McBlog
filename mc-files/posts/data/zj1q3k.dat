@@ -1,1 +1,5 @@
-a:8:{s:2:"id";s:6:"zj1q3k";s:5:"state";s:7:"publish";s:5:"title";s:9:"HelloWord";s:4:"tags";a:1:{i:0;s:9:"新征程";}s:4:"date";s:10:"2015-11-29";s:4:"time";s:8:"09:57:40";s:11:"can_comment";s:1:"1";s:7:"content";s:24:"有一个McBlog博客。";}
+a:8:{s:2:"id";s:6:"zj1q3k";s:5:"state";s:7:"publish";s:5:"title";s:9:"HelloWord";s:4:"tags";a:1:{i:0;s:9:"新征程";}s:4:"date";s:10:"2015-11-29";s:4:"time";s:8:"09:57:40";s:11:"can_comment";s:1:"1";s:7:"content";s:466:"又一个McBlog博客。
+
+非常感谢您选择了McBlog，这是一个及其精简，基于文本存储数据的博客程序，她小巧且迷人，有非同一般的的表现能力，备份和迁移及其方便，完全能够满足你的日常记录所用。
+
+她采用更易书写的Markdown编辑器，相信你上手后，一定会被这款小巧精悍的程序所吸引，不需要任何复杂的粉饰，如果你在寻找简单，那么就是McBlog了！";}

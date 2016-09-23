@@ -138,7 +138,7 @@ $theme_post_number = $mc_config['theme_post_number']; //文章列表数目
         <div class="field">
           <div class="label">附件CDN</div>
           <input class="textbox" type="text" name="site_cdn" value="<?php echo htmlspecialchars($site_cdn); ?>" />
-          <div class="info">不启用请留空 . 镜像地址：<?php echo dirname('http://'.$_SERVER['SERVER_NAME'].$_SERVER["REQUEST_URI"]).'/upload';?></div>
+          <div class="info">不启用请留空 . 镜像地址：<?php echo dirname('http://'.$_SERVER['HTTP_HOST'].$_SERVER["REQUEST_URI"]).'/upload';?></div>
         </div>
         <div class="clear"></div>
         <hr>

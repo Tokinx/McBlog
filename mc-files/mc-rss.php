@@ -23,7 +23,7 @@ echo '<?xml version="1.0" encoding="UTF-8"?>'; ?>
       <guid><?php mc_the_url(); ?></guid>
       <dc:creator><?php mc_nick_name(); ?></dc:creator>
       <pubDate><?php mc_the_date(); ?> <?php mc_the_time(); ?></pubDate>
-      <?php mc_the_tags("<category><![CDATA[", "\n", "]]></category>"); echo "\n"; ?>
+      <?php mc_the_tags("<category><![CDATA[", "\n", "]]></category>",false); echo "\n"; ?>
       <content:encoded><![CDATA[<?php mc_the_content();?>]]></content:encoded>
     </item>
 <?php } ?>

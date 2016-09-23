@@ -1,10 +1,8 @@
 <?php
 require_once dirname(__FILE__).'/mc-files/mc-core.php';
 
-if($mc_config['theme_post_number']!='')
-	$mc_post_per_page = $mc_config['theme_post_number'];
-else
-	$mc_post_per_page = 8 ;
+// 如果后台设置是空的就默认每页显示8篇文章
+$mc_post_per_page = $mc_config['theme_post_number']!='' ? $mc_config['theme_post_number'] : 8;
 
 $qs = isset($_SERVER['QUERY_STRING']) ? $_SERVER['QUERY_STRING'] : '';
 
@@ -147,19 +145,33 @@ else if ($mc_get_type == 'page') {
 }
 else {
   require 'mc-files/posts/index/publish.php';
-  
   $mc_post_ids = array_keys($mc_posts);
   $mc_post_count = count($mc_post_ids);
 }
-error_reporting(0);
-if ($_GET['theme']<>'')
-	require "mc-files/theme/". $_GET['theme'] ."/index.php";
-else{
-	if ($mc_get_type != 'rss'){
-		require "mc-files/theme/". $mc_config['site_theme'] ."/index.php";
-		}
-	else
-		require 'mc-files/mc-rss.php';
-}
 
-?>
+error_reporting(0);
+// 防注入函数
+function checkHtml($data){
+    $ret = preg_match("/['.,:;*?~`!@#$%^&+=)(<>{}]|]|[|/|\|\"||/",$data);
+    if ($ret == 1) {
+        return false;
+    } else {
+        return true;
+    }
+}
+// 控制主题显示
+if ($_GET['theme']<>''){
+    $data = $_GET['theme'];
+    if(checkHtml($data)){
+        require "mc-files/theme/". $data ."/index.php";
+    } else {
+        echo 'error!';
+        exit();
+    }
+} else {
+	if ($mc_get_type != 'rss'){
+        require "mc-files/theme/". $mc_config['site_theme'] ."/index.php";
+    } else {
+        require 'mc-files/mc-rss.php';   
+    }
+}

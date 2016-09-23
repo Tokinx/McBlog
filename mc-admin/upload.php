@@ -18,10 +18,7 @@ $export = "http://";
 $uploadfile = $rand . ".jpg";
 if ((in_array($fileext, $type_image)||in_array($fileext, $type_annex))&&($_FILES["file"]["size"] < 81920000)){
 	move_uploaded_file($_FILES["file"]["tmp_name"],'upload/' . $uploadfile);
-	if($mc_config['site_cdn']=='')
-		$export = dirname('http://'.$_SERVER['SERVER_NAME'].$_SERVER["REQUEST_URI"]) . "/upload/" . $uploadfile;
-	else
-		$export = $mc_config['site_cdn'] . $uploadfile;
+	$export = dirname('http://'.$_SERVER['SERVER_NAME'].$_SERVER["REQUEST_URI"]) . "/upload/" . $uploadfile;
 }
 ?>
 <!DOCTYPE html>

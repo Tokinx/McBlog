@@ -165,7 +165,7 @@ function empty_textbox_blur(target) {
     时间：
     <select name="year">
       <option value=""></option>
-<?php $year = substr($page_date, 0, 4); for ($i = date("Y")-10; $i <= date("Y")+1; $i ++) { ?>
+<?php $year = substr($page_date, 0, 4); for ($i = date("Y")-3; $i <= date("Y")+3; $i ++) { ?>
       <option value="<?php echo $i; ?>" <?php if ($year == $i) echo 'selected="selected";' ?>><?php echo $i; ?></option>
 <?php } ?>
     </select> -
