@@ -10,15 +10,15 @@ function fileext($filename){
 }
 
 $type_image = array("jpg", "jpeg", "png");
-$type_annex = array("gif", "zip", "rar", "txt", "mp3", "flv");
+$type_annex = array("gif", "zip", "rar", "txt", "mp3", "pdf", "psd", "doc", "docx");
 $rand="hi_".date('Ymd')."_".rand();
 $fileext = strtolower(fileext($_FILES['file']['name']));
 $export = "http://";
-//$uploadfile = $rand . "." . $fileext;
-$uploadfile = $rand . ".jpg";
+$uploadfile = $rand . "." . $fileext;
+//$uploadfile = $rand . ".jpg";
 if ((in_array($fileext, $type_image)||in_array($fileext, $type_annex))&&($_FILES["file"]["size"] < 81920000)){
 	move_uploaded_file($_FILES["file"]["tmp_name"],'upload/' . $uploadfile);
-	$export = dirname('http://'.$_SERVER['SERVER_NAME'].$_SERVER["REQUEST_URI"]) . "/upload/" . $uploadfile;
+	$export = $mc_config['site_link'].dirname($_SERVER["REQUEST_URI"]) . "/upload/" . $uploadfile;
 }
 ?>
 <!DOCTYPE html>
