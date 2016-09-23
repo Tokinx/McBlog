@@ -1,5 +1,5 @@
 <?php error_reporting(0);
-require_once dirname(dirname(__FILE__)).'/mc-files/mc-conf.php';
+require_once '../mc-files/mc-conf.php';
 $error_msg='';
 $token = $_COOKIE['mc_token'];
 if (isset($token))
@@ -30,7 +30,7 @@ if (isset($_POST['login']))
   <link style="text/css" rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <form action="<?php echo $_SERVER['REQUEST_URI'];?>" method="post">
+  <form action="index.php" method="post">
   <div id="login_title"><?php echo $mc_config['site_name'];?></div>
   <div id="login_form">
     <div id="login_form_box">

@@ -1,5 +1,5 @@
 <?php
-require_once dirname(__FILE__).'/mc-files/mc-core.php';
+require_once 'mc-files/mc-core.php';
 
 // 如果后台设置是空的就默认每页显示8篇文章
 $mc_post_per_page = $mc_config['theme_post_number']!='' ? $mc_config['theme_post_number'] : 8;

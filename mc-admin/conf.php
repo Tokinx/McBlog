@@ -124,7 +124,7 @@ $theme_post_number = $mc_config['theme_post_number']; //文章列表数目
         <div class="field">
           <div class="label">友情链接</div>
           <textarea rows="5" class="textbox" name="theme_links" style="margin-bottom:-12px;"><?php echo htmlspecialchars($theme_links); ?></textarea>
-          <div class="info">每行一条，例：<code>&lt;li&gt;&lt;a target="_blank" href="http://idevs.cn/"&gt;设计笔记&lt;/a&gt;&lt;/li&gt;</code></div>
+          <div class="info">每行一条，例：<code>&lt;li&gt;&lt;a target="_blank" href="https://biji.io/"&gt;设计笔记&lt;/a&gt;&lt;/li&gt;</code></div>
         </div>
         <div class="clear"></div>
     </div>

@@ -1,6 +1,6 @@
 <?php
 error_reporting(0);
-require_once dirname(dirname(__FILE__)).'/mc-files/mc-conf.php';
+require_once '../mc-files/mc-conf.php';
 if (isset($_COOKIE['mc_token'])||isset($_POST['login']));
 else Header("Location:{$mc_config['site_link']}/mc-admin/index.php");
 

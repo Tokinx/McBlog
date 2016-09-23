@@ -84,7 +84,7 @@
 <div class="clearer"></div>
 <footer id="footer">
 Theme is NewRed . Powered by McBlog</br>
-&copy; <?php echo date('Y'); ?> <a href="https://www.idevs.cn/">设计笔记</a><?php mc_site_icp();?>
+&copy; <?php echo date('Y'); ?> <a href="https://biji.io">设计笔记</a> <?php mc_site_icp();?>
 </footer>
 </body>
 </html>
