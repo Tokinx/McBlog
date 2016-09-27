@@ -14,7 +14,7 @@ if (isset($_POST['_IS_POST_BACK_'])) {
   $page_path        = $_POST['path'];
   $page_state       = $_POST['state'];
   $page_title       = trim($_POST['title']);
-  $page_content     = get_magic_quotes_gpc() ? stripslashes(trim($_POST['content'])) : trim($_POST['content']);;
+  $page_content     = get_magic_quotes_gpc() ? stripslashes($_POST['content']) : $_POST['content'];;
   $page_date        = date("Y-m-d");
   $page_time        = date("H:i:s");
   $page_can_comment = $_POST['can_comment'];
@@ -39,7 +39,7 @@ if (isset($_POST['_IS_POST_BACK_'])) {
   
   $page_path_part  = explode('/', $page_path);
   $page_path_count = count($page_path_part);
-  
+
   for ($i = 0; $i < $page_path_count; $i ++) {
     $trim = trim($page_path_part[$i]);
     if ($trim == '') {
@@ -48,7 +48,7 @@ if (isset($_POST['_IS_POST_BACK_'])) {
       $page_path_part[$i] = $trim;
     }
   }
-  
+
   reset($page_path_part);
   
   $page_path = implode('/', $page_path_part);

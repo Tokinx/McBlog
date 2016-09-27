@@ -81,8 +81,8 @@ select{border:solid 1px #eee;border-radius:0;padding:2px 4px;}
 
 /* 编辑器 */
 .edit_textbox{width:100%;line-height:36px;margin:0 0 20px;padding:0 10px;}
-.edit_textbox[name=tags],.edit_textbox[name=path]{box-shadow:none!important;border:1px solid #eee;border-radius:3px;}
-.edit_textbox:focus{box-shadow:0 0 0 1px #2ae;border-radius:2px}
+.edit_textbox[name=tags],.edit_textbox[name=path]{box-shadow:0 0 0 1px #eee;border-radius:3px;}
+.edit_textbox:focus,.edit_textbox:focus{box-shadow:0 0 0 1px #2ae;border-radius:2px}
 .edit_textarea{height:300px;width:100%!important;font-size:13px;border:solid 1px #eee;padding:10px;overflow-x:visible;overflow-y:visible;line-height: 1.5;font-size: 100%;font-family: Menlo,Monaco,Consolas,"Courier New",monospace;resize: none;}
 .wmd-input{display:block;clear:left;border-radius:0 0 3px 3px;}
 /* 编辑器按钮 */
@@ -103,8 +103,8 @@ input.wmd-fieldinput,textarea.wmd-fieldinput{width:100%;border: 1px solid #D9D9D
 .wmd-fielderror .wmd-fieldlabel{color:#DF0000;}
 .wmd-fieldreason{color:red;font-size:.65em;font-weight:700;}
 .wmd-command{list-item-type:none;display:block;float:left;margin-right:5px;}
-.wmd-command span{display:block;width:20px;height:20px;background:url(images/wmd-toolbar.png) no-repeat;font-size:0;}
-.wmd-spacer{width:1px;height:16px;margin:4px 9px 0 4px;}
+.wmd-command span{display:block;width:20px;height:20px;background:url(static/toolbar.png) no-repeat;font-size:0;}
+.wmd-spacer{width:1px;height:16px;margin:4px 10px 0 4px;}
 .wmd-spacer span{width:1px;border:none;background:#ddd;height:16px;margin:-2px 0 0;}
 .wmd-strong span{background-position:0 0;}
 .wmd-em span{background-position:-20px 0;}
@@ -118,18 +118,16 @@ input.wmd-fieldinput,textarea.wmd-fieldinput{width:100%;border: 1px solid #D9D9D
 .wmd-hr span{background-position:-180px 0;}
 /* 新增按钮 */
 #editor{position:relative;}
-#editor .wmd-view,#editor .wmd-type{position:relative;position:absolute;top:9px;right:8px;width:20px;height:20px;padding:2px;background:url(images/wmd-toolbar.png) no-repeat;font-size:0;cursor:pointer;display:block;}
-#editor .wmd-type{right:40px;background-position:-238px 2px!important;}
-#editor .wmd-view{right:10px;background-position:-298px 2px!important;}
-#editor .wmd-view:hover,#editor .wmd-type:hover{background:#eee url(images/wmd-toolbar.png) no-repeat;}
+#editor .wmd-view,#editor .wmd-type{position:relative;position:absolute;top:9px;right:8px;width:20px;height:20px;padding:2px;background:url(static/toolbar.png) no-repeat;font-size:0;cursor:pointer;display:block;}
+#editor .wmd-type{right:40px;background-position:-278px 2px!important;}
+#editor .wmd-view{right:10px;background-position:-238px 2px!important;}
+#editor .wmd-view:hover,#editor .wmd-type:hover,.type #editor .wmd-off:hover,.view #editor .wmd-off:hover,.view #editor .wmd-off:hover{background-color:#eee;}
 #editor .wmd-off{display:none;}
 
 /* 全屏预览 */
-.type #editor .wmd-off,.view #editor .wmd-off{display:block;position:absolute;color:#fff;width:20px;height:20px;padding:2px;background:url(images/wmd-toolbar.png) no-repeat -258px 2px;font-size:0;cursor:pointer;top:14px;right:20px;z-index:9;}
-.type .annex{top:13px;right:60px;}
-.type #editor .wmd-off:hover,.view #editor .wmd-off:hover{background:#eee url(images/wmd-toolbar.png) no-repeat -258px 2px;}
-.view #editor .wmd-off{position:fixed;background:#eee url(images/wmd-toolbar.png) no-repeat -258px 2px;border-radius:3px;}
-.view #editor .wmd-off:hover{background:#666 url(images/wmd-toolbar.png) no-repeat -258px -18px;}
+.type #editor .wmd-off,.view #editor .wmd-off{display:block;position:absolute;color:#fff;width:20px;height:20px;padding:2px;background:url(static/toolbar.png) no-repeat -258px 2px;font-size:0;cursor:pointer;top:14px;right:20px;z-index:9;}
+.type .annex{top:14px;right:60px;}
+.view #editor .wmd-off{position:fixed;background:url(static/toolbar.png) no-repeat -258px 2px;border-radius:3px;}
 .type #editor .wmd-view,.type #editor .wmd-type{display:none;}
 .type #editor .left{width:50%;float:left;}
 .type #editor .left .wmd-input{padding:18px;border-right:1px solid #ddd;height:90vh}
@@ -163,10 +161,7 @@ input.wmd-fieldinput,textarea.wmd-fieldinput{width:100%;border: 1px solid #D9D9D
 .wmd-preview ul li{list-style-type:disc;text-indent:0;}
 .wmd-preview strong{font-weight:bold;}
 .wmd-preview hr{border:none;height:2px;background:#ddd;margin:20px 40%;}
-.wmd-preview pre{padding:0 20px;white-space:pre-wrap;word-wrap:break-word;font:14px/22px 'courier new';position:relative;margin:10px 0;background-color:#eee;text-indent:0em;}
-.wmd-preview pre:before,.wmd-preview pre:after{display:block;padding-top:10px;padding-bottom:10px;color:#2f76bb;}
-.wmd-preview pre:before{content:"-- [ CODE ] --"}
-.wmd-preview pre:after{content:"-- [ EOF ] --";text-align:right}
+.wmd-preview pre{padding:1em;white-space:pre-wrap;word-wrap:break-word;font:14px/22px 'courier new';position:relative;margin:10px 0;background-color:#f6f6f6;text-indent:0em;}
 .wmd-preview code{padding:2px;background:#ddd;font:14px/26px 'courier new';border-radius:3px;margin:0 4px;}
 .wmd-preview pre code{display:block;background:none;text-indent:0em;margin:0;overflow:auto;max-height:240px;}
 .wmd-preview table{border-bottom:1px solid #504F4F;border-right:1px solid #504F4F;border-collapse:collapse;border-spacing:0;margin:0 0 20px;width:100%;}
@@ -187,8 +182,8 @@ input.wmd-fieldinput,textarea.wmd-fieldinput{width:100%;border: 1px solid #D9D9D
 #upload .up_file{position:absolute;left:0;top:0;bottom:0;right:0;width:260px;opacity:0;filter:alpha(opacity:0);cursor:pointer;}
 
 /* 全屏写作 */
-.annex{background:url('images/icons.png') 1px -23px no-repeat;font-size:0;display:block;width:24px;height:24px;padding:1px;cursor:pointer;position:absolute;right:80px;top:8px;border-radius:3px;}
-.annex:hover{background:#eee url('images/icons.png') 1px 1px no-repeat;}
+.annex{background:url(static/toolbar.png) no-repeat -199px 2px;font-size:0;display:block;width:22px;height:22px;padding:1px;cursor:pointer;position:absolute;right:70px;top:9px;}
+.annex:hover{background:#eee url(static/toolbar.png) no-repeat -199px 2px;}
 .annex_wind{display:none;position:relative;border-radius:3px;}
 .annex_body:before{content:"";background:#000;opacity: 0.5;top:0;bottom:-10px;left:0;right:0;z-index:10;position:absolute}
 .annex_body .annex_wind{display:block;position:fixed;background:#fff;width:400px;height:200px;padding:20px 20px 0 20px;top:50%;left:50%;margin:-98px -200px;z-index:11;}

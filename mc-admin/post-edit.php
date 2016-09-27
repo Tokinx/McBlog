@@ -15,7 +15,7 @@ if (isset($_POST['_IS_POST_BACK_'])) {
   $post_id          = $_POST['id'];
   $post_state       = $_POST['state'];
   $post_title       = trim($_POST['title']);
-  $post_content     = get_magic_quotes_gpc() ? stripslashes(trim($_POST['content'])) : trim($_POST['content']);
+  $post_content     = get_magic_quotes_gpc() ? stripslashes($_POST['content']) : $_POST['content'];
   $post_tags        = explode(',', trim($_POST['tags']));
   $post_date        = date("Y-m-d");
   $post_time        = date("H:i:s");
@@ -40,7 +40,7 @@ if (isset($_POST['_IS_POST_BACK_'])) {
     $post_time = substr_replace($post_time, $_POST['second'], 6, 2);
 
   $post_tags_count = count($post_tags);
-  
+
   for ($i = 0; $i < $post_tags_count; $i ++) {
     $trim = trim($post_tags[$i]);
     if ($trim == '') {
@@ -49,7 +49,7 @@ if (isset($_POST['_IS_POST_BACK_'])) {
       $post_tags[$i] = $trim;
     }
   }
-  
+
   reset($post_tags);
   
   if ($post_title == '') $error_msg = '文章标题不能为空';

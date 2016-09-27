@@ -1,5 +1,6 @@
 <?php
-require_once 'markdown.php';
+include 'mc-parsedown.php';
+$Parsedown = new Parsedown();
 
 function mc_site_name($print = true) {
     global $mc_config;
@@ -293,13 +294,14 @@ function mc_the_tags($item_begin='', $item_gap=', ', $item_end='', $as_link = tr
 function mc_the_content($print = true) {
     global $mc_data;
     global $mc_config;
+    global $Parsedown;
     if (!isset($mc_data)) {
         global $mc_post_id;
         $data = unserialize(file_get_contents('mc-files/posts/data/'.$mc_post_id.'.dat')); 
-        $html = Markdown($data['content']); 
+        $html = $Parsedown->text($data['content']); 
     }
     else {
-        $html = Markdown($mc_data['content']);
+        $html = $Parsedown->text($mc_data['content']);
     }
     if($mc_config['site_cdn']!=''){
         $html = preg_replace('/"([\s\S]*?)\/upload\/([\s\S]*?)"/i', $mc_config['site_cdn'].'/$2', $html);
@@ -314,10 +316,13 @@ function mc_the_content($print = true) {
 function mc_the_excerpt($num) {
         global $mc_data;
 	    if (!isset($mc_data)) {
-		global $mc_post_id;
-		$data = unserialize(file_get_contents('mc-files/posts/data/'.$mc_post_id.'.dat'));
-		if( $num <10 || $num == '' ) $num=80;
-            $html = mb_substr(trim(strip_tags(Markdown($data['content']),'')), 0, $num, 'utf-8');
+            global $mc_post_id;
+            global $Parsedown;
+            $data = unserialize(file_get_contents('mc-files/posts/data/'.$mc_post_id.'.dat'));
+            if( $num <10 || $num == '' ){
+                $num=80;
+            }
+            $html = mb_substr(trim(strip_tags($Parsedown->text($data['content']),'')), 0, $num, 'utf-8');
             if($html){
                 echo $html.'...';
             }
@@ -329,9 +334,10 @@ function mc_the_thumbnail($print = true) {
     global $mc_data;
     if (!isset($mc_data)) {
         global $mc_post_id;
+        global $Parsedown;
         $data = unserialize(file_get_contents('mc-files/posts/data/'.$mc_post_id.'.dat'));
         $matches[0]=null;
-        if(preg_match('/<img(.*)\/>/iU',trim(strip_tags(Markdown($data['content']),'<img>')),$matches)){
+        if(preg_match('/<img(.*)\/>/iU',trim(strip_tags($Parsedown->text($data['content']),'<img>')),$matches)){
             $html = $matches[0];
             global $mc_config;
             if($mc_config['site_cdn']!=''){

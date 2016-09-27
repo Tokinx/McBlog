@@ -13,8 +13,9 @@
 	</div>
 	</div>
 	
-    <script type="text/javascript" src="js/showdown.js"></script>
-    <script type="text/javascript" src="js/wmd.js"></script>
+    <script type="text/javascript" src="static/showdown.js"></script>
+    <script type="text/javascript" src="static/wmd.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
     <script>
     $(document).ready(function() {
       new WMD("input", "toolbar", { preview: "preview" });
@@ -22,34 +23,33 @@
 	
 	$(function(){
 		$('.annex').click(function(){
-		$('body').addClass('annex_body');
+            $('body').addClass('annex_body');
 		});
 		$('.annex_off').click(function(){
-		$('body').removeClass('annex_body');
+            $('body').removeClass('annex_body');
 		});
 		
 		$('.wmd-view').click(function(){
-		$('body').addClass('view');
-		$('body').removeClass('type');
+            $('body').addClass('view');
+            $('body').removeClass('type');
 		});
 		$('.wmd-off').click(function(){
-		$('body').removeClass('type view');
+            $('body').removeClass('type view');
 		});
 		
 		$('.wmd-type').click(function(){
-		$('body').addClass('type');
-		$('body').removeClass('view');
-		var my_height = document.body.clientHeight-53;
-		document.getElementById("input").style.height= my_height + "px";
-		document.getElementById("preview").style.height= my_height + "px";
+            $('body').addClass('type');
+            $('body').removeClass('view');
+            var my_height = document.body.clientHeight-53;
+            document.getElementById("input").style.height= my_height + "px";
+            document.getElementById("preview").style.height= my_height + "px";
 		});
 		$('.wmd-off').click(function(){
-		$('body').removeClass('type view');
-		document.getElementById("input").style.height="";
-		document.getElementById("preview").style.height="";
+            $('body').removeClass('type view');
+            document.getElementById("input").style.height="";
+            document.getElementById("preview").style.height="";
 		});
-		
-		
+        
 		});
 	
 	document.body.clientHeight
@@ -102,14 +102,14 @@
           arrayPageSize = new Array(pageWidth, pageHeight, windowWidth, windowHeight);
           return arrayPageSize;
       }
-/*
+        /*
       function resizeEditor() {
         var e = document.getElementById('editor');
         e.style.height = (getPageSize()[3] - e.offsetTop - 250) + 'px';
       }
-*/
       window.onload = resizeEditor;
       window.onresize = resizeEditor;
+        */
     </script>
 <?php } ?>
 <div class="annex_wind">

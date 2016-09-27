@@ -1,4 +1,4 @@
-<?php error_reporting(0);
+<?php //error_reporting(0);
 require_once '../mc-files/mc-conf.php';
 $error_msg='';
 $token = $_COOKIE['mc_token'];

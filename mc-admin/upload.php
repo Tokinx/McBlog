@@ -1,6 +1,17 @@
 <?php
 error_reporting(0);
-require_once 'head.php';
+require_once '../mc-files/mc-conf.php';
+$error_msg='';
+if (isset($_COOKIE['mc_token'])) {
+  $token = $_COOKIE['mc_token'];
+  if ($token != md5($mc_config['user_name'].'_'.$mc_config['user_pass'])) {
+    Header("Location:index.php");
+    exit;
+  }
+} else {
+  Header("Location:index.php");
+  exit;
+}
 
 function fileext($filename){
     $sTemp = strrchr($filename, ".");
@@ -13,7 +24,6 @@ $rand="hi_".date('Ymd')."_".rand();
 $fileext = strtolower(fileext($_FILES['file']['name']));
 $export = "http://";
 $uploadfile = $rand . "." . $fileext;
-//$uploadfile = $rand . ".jpg";
 if ((in_array($fileext, $type_image)||in_array($fileext, $type_annex))&&($_FILES["file"]["size"] < 81920000)){
 	move_uploaded_file($_FILES["file"]["tmp_name"],'upload/' . $uploadfile);
 	$export = $mc_config['site_link'].dirname($_SERVER["REQUEST_URI"]) . "/upload/" . $uploadfile;
