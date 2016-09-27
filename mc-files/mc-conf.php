@@ -1,6 +1,6 @@
 <?php
 $mc_config = array (
-  'version' => '2.2.1',
+  'version' => '2.2.3',
   'site_link' => '//'.$_SERVER['HTTP_HOST'],
   'site_name' => 'HelloWord',
   'site_desc' => '又一个McBlog博客',
