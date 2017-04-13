@@ -137,7 +137,7 @@ else if ($mc_get_type == 'page') {
     $mc_post_id = $mc_get_name;
     $mc_post = $mc_pages[$mc_post_id];
     
-    $mc_data = unserialize(file_get_contents('mc-files/pages/data/'.$mc_post['file'].'.dat'));
+    $mc_data = @unserialize(file_get_contents('mc-files/pages/data/'.$mc_post['file'].'.dat'));
   }
   else {
     mc_404();
